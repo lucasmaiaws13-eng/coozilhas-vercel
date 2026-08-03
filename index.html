@@ -222,20 +222,33 @@
   .btn-primary{background:var(--gold);color:var(--brown-deep)}
   .btn-primary:hover{background:#dab63a}
   .btn svg{width:17px;height:17px}
-  .btn-inline{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.1rem;font-size:.86rem;font-weight:600;color:var(--acai);text-decoration:none;border-bottom:1.5px solid rgba(90,47,71,.3);padding-bottom:2px;transition:.2s}
-  .btn-inline:hover{border-color:var(--acai)}
-  .btn-inline svg{width:15px;height:15px}
 
-  /* ---------- support ways ---------- */
-  .ways{display:grid;grid-template-columns:1fr;gap:1.2rem;max-width:1000px;margin-inline:auto}
-  @media(min-width:760px){.ways{grid-template-columns:1fr 1fr}}
-  .way{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:1.9rem 1.7rem;display:flex;flex-direction:column}
-  .way .wk{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem}
-  .way .wi{width:42px;height:42px;border-radius:11px;background:var(--cream-2);display:grid;place-items:center;flex:none}
-  .way .wi svg{width:23px;height:23px;color:var(--acai)}
-  .way h3{font-family:'Fraunces';font-size:1.2rem;color:var(--brown-deep);margin:0}
-  .way p{font-size:.95rem;color:#4a3627;line-height:1.65}
-  .way.featured{background:linear-gradient(160deg,#FBF6EC,var(--cream));border-color:rgba(201,162,39,.45)}
+  /* ---------- support ways: clickable tiles ---------- */
+  .ways{display:grid;grid-template-columns:1fr;gap:1.2rem;max-width:1060px;margin-inline:auto}
+  @media(min-width:760px){
+    .ways{grid-template-columns:repeat(6,1fr)}
+    .way-lg{grid-column:span 3}
+    .way-sm{grid-column:span 2}
+  }
+  .way{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:1.9rem 1.7rem;display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .way::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--tc);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+  .way:hover,.way:focus-within{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--tc) 45%,transparent)}
+  .way:hover::before,.way:focus-within::before{transform:scaleX(1)}
+  .way-ico{width:50px;height:50px;border-radius:13px;background:color-mix(in srgb,var(--tc) 12%,transparent);color:var(--tc);display:grid;place-items:center;flex:none;margin-bottom:1.1rem}
+  .way-ico svg{width:26px;height:26px}
+  .way h3{font-family:'Fraunces';font-size:1.2rem;color:var(--brown-deep);margin:0 0 .6rem}
+  .way-lg h3{font-size:1.38rem}
+  .way h3 a{text-decoration:none;color:inherit}
+  .way h3 a::after{content:"";position:absolute;inset:0;z-index:1}
+  .way p{font-size:.94rem;color:#4a3627;line-height:1.62;flex:1}
+  .way-foot{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;justify-content:space-between}
+  .way-go{display:inline-flex;align-items:center;gap:.45rem;font-size:.83rem;font-weight:600;color:var(--tc)}
+  .way-go svg{width:15px;height:15px;transition:transform .25s}
+  .way:hover .way-go svg{transform:translateX(4px)}
+  .way-sheet{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--cream);background:var(--acai);padding:.58rem 1.1rem;border-radius:100px;transition:background .2s}
+  .way-sheet:hover{background:var(--acai-deep)}
+  .way-sheet svg{width:14px;height:14px}
+  @media(prefers-reduced-motion:reduce){.way,.way::before,.way-go svg{transition:none}.way:hover{transform:none}}
 
   /* ---------- steps ---------- */
   .steps{display:grid;grid-template-columns:1fr;gap:1.3rem;max-width:1060px;margin-inline:auto}
@@ -547,27 +560,41 @@
       <h2>Cinco formas de entrar nessa construção</h2>
     </div>
     <div class="ways">
-      <div class="way featured">
-        <div class="wk"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg></span><h3>Materiais e obra</h3></div>
+      <div class="way way-lg" style="--tc:#4E6636">
+        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg></span>
+        <h3><a href="#contatos">Materiais e obra</a></h3>
         <p>As cozinhas-escola de Combu e Cotijuba ainda vão ser construídas. Preparamos um orçamento técnico detalhado com os materiais de construção necessários — estrutura, elétrica, hidráulica e acabamento — para que parceiros possam contribuir com o que for mais estratégico para o seu negócio.</p>
-        <a href="#" class="btn-inline link-planilha" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Ver planilha de materiais</a>
+        <div class="way-foot">
+          <a href="#" class="way-sheet link-planilha" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Ver planilha</a>
+          <span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
       </div>
-      <div class="way featured">
-        <div class="wk"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></span><h3>Equipamentos para as cozinhas</h3></div>
+      <div class="way way-lg" style="--tc:#5A2F47">
+        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></span>
+        <h3><a href="#contatos">Equipamentos para as cozinhas</a></h3>
         <p>Fogões industriais, geladeiras, liquidificadores, bancadas e utensílios — os itens que, quando a obra estiver pronta, vão transformar o espaço construído em um espaço que ensina, produz e gera renda.</p>
-        <a href="#" class="btn-inline link-planilha" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Ver planilha de materiais</a>
+        <div class="way-foot">
+          <a href="#" class="way-sheet link-planilha" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Ver planilha</a>
+          <span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
       </div>
-      <div class="way">
-        <div class="wk"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg></span><h3>Visibilidade institucional</h3></div>
+      <div class="way way-sm" style="--tc:#6E523E">
+        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <h3><a href="#contatos">Visibilidade institucional</a></h3>
         <p>Parceiros do Coozilhas recebem o selo "Parceiro Coozilhas" para uso em suas próprias comunicações, além de identificação visual nos espaços que ajudaram a construir e equipar.</p>
+        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
       </div>
-      <div class="way">
-        <div class="wk"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3>Vivência nas ilhas</h3></div>
+      <div class="way way-sm" style="--tc:#4E6636">
+        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <h3><a href="#contatos">Vivência nas ilhas</a></h3>
         <p>Representantes de empresas parceiras podem visitar Combu e Cotijuba, conhecer de perto as comunidades, o restaurante Boá na Ilha e a sede do MMIB, e acompanhar ao vivo o avanço das obras.</p>
+        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
       </div>
-      <div class="way">
-        <div class="wk"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m23 7-7 5 7 5zM1 5h15v14H1z"/></svg></span><h3>Conteúdo e prestação de contas</h3></div>
+      <div class="way way-sm" style="--tc:#5A2F47">
+        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m23 7-7 5 7 5zM1 5h15v14H1z"/></svg></span>
+        <h3><a href="#contatos">Conteúdo e prestação de contas</a></h3>
         <p>Registro fotográfico e em vídeo de toda a jornada — do terreno vazio à cozinha em funcionamento — de uso livre para os parceiros em seus relatórios institucionais e de sustentabilidade.</p>
+        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
       </div>
     </div>
   </div>
