@@ -105,12 +105,30 @@
   @media(min-width:680px){.stats{grid-template-columns:repeat(3,1fr)}}
   .sources{font-size:.76rem;color:#7a6653;margin:1.8rem auto 0;line-height:1.55;max-width:72ch;text-align:center}
 
-  /* text in two editorial columns on wide screens */
-  .prose-cols{max-width:var(--measure);margin-inline:auto}
-  @media(min-width:1000px){
-    .prose-cols{max-width:1000px;column-count:2;column-gap:3.4rem}
-    .prose-cols p{break-inside:avoid}
-  }
+  /* ---------- expandable detail card ---------- */
+  .detail{max-width:840px;margin:0 auto;background:var(--cream);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+  .band-cream2 .detail{background:var(--cream)}
+  .detail-summary{padding:clamp(1.7rem,4vw,2.5rem) clamp(1.7rem,4vw,2.5rem) 0}
+  .detail-summary p{font-size:var(--fs-lead);line-height:1.62;color:#3a2a1c}
+  .detail-toggle{display:inline-flex;align-items:center;gap:.55rem;margin:1.5rem clamp(1.7rem,4vw,2.5rem) clamp(1.7rem,4vw,2.5rem);background:var(--acai);color:var(--cream);border:none;font-family:inherit;font-size:.88rem;font-weight:600;padding:.78rem 1.5rem;border-radius:100px;cursor:pointer;transition:background .2s}
+  .detail-toggle:hover{background:var(--acai-deep)}
+  .detail-toggle svg{width:16px;height:16px;transition:transform .35s ease}
+  .detail-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .detail-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+  .detail-toggle[aria-expanded="true"]+.detail-body{grid-template-rows:1fr}
+  .detail-inner{overflow:hidden}
+  .detail-pad{padding:0 clamp(1.7rem,4vw,2.5rem) clamp(1.7rem,4vw,2.5rem);border-top:1px solid var(--line);padding-top:clamp(1.5rem,3.5vw,2rem)}
+  .detail-pad .prose p{font-size:.98rem}
+  .detail-pad .sources{margin-top:1.4rem;text-align:left}
+
+  /* ---------- end-of-section CTA ---------- */
+  .cta-end{margin-top:clamp(2.4rem,5vw,3.4rem);text-align:center}
+  .cta-link{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;font-size:.9rem;padding:.85rem 1.7rem;border-radius:100px;border:1.5px solid var(--acai);color:var(--acai);background:transparent;transition:background .22s,color .22s}
+  .cta-link:hover{background:var(--acai);color:var(--cream)}
+  .cta-link svg{width:16px;height:16px;transition:transform .22s}
+  .cta-link:hover svg{transform:translateY(2px)}
+  .band-ink .cta-link{border-color:var(--gold);color:var(--gold)}
+  .band-ink .cta-link:hover{background:var(--gold);color:var(--brown-deep)}
 
   .callout{display:flex;gap:1rem;align-items:flex-start;background:var(--cream-2);border-left:3px solid var(--leaf-deep);border-radius:0 12px 12px 0;padding:1.2rem 1.4rem;margin:2rem auto;max-width:64ch}
   .callout .ci{width:36px;height:36px;border-radius:10px;background:var(--cream);display:grid;place-items:center;flex:none}
@@ -333,18 +351,33 @@
       <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div class="num" data-count="78" data-prefix="+" data-suffix=" mil">+78 mil</div><div class="lbl">pessoas vivem apenas na região insular de Belém, que possui 39 ilhas</div></div>
       <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg><div class="num" data-count="62" data-suffix="%">62%</div><div class="lbl">dos municípios da Amazônia Legal não têm estrutura mínima para enfrentar a crise climática</div></div>
     </div>
-    <div class="prose-cols reveal">
+    <div class="detail reveal">
+      <div class="detail-summary">
+        <p>A Região Norte tem o maior índice de insegurança alimentar do país, e o Pará lidera esse cenário. Nas 39 ilhas de Belém, a dieta tradicional ribeirinha — pesca, extrativismo e cultivo local — vem sendo substituída por alimentos ultraprocessados, à medida que o acesso a alimentos frescos se torna mais difícil, sobretudo nos períodos de estiagem. As mudanças climáticas agravam o quadro.</p>
+      </div>
+      <button class="detail-toggle" aria-expanded="false" data-label-closed="Saiba mais" data-label-open="Mostrar menos">
+        <span class="dt-label">Saiba mais</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="detail-body">
+        <div class="detail-inner">
+          <div class="detail-pad">
+            <div class="prose">
       <p>44,6% das famílias paraenses convivem com algum grau de dificuldade para acessar alimentos, e o estado tem um dos maiores índices de insegurança alimentar grave do país, ao lado do Amapá e do Amazonas (IBGE, PNAD Contínua, 2024).</p>
       <p>A Região Norte, que concentra a maior parte da Amazônia brasileira, é apontada pela Rede PENSSAN como a região com o maior índice de insegurança alimentar do país, afetando de forma desproporcional mulheres, famílias negras e populações rurais.</p>
       <p>Belém possui 39 ilhas, e mais de 78 mil pessoas vivem apenas na sua região insular (IBGE, 2021). Estudos acadêmicos sobre comunidades ribeirinhas amazônicas documentam uma transição alimentar preocupante: a dieta tradicional, baseada em pesca, extrativismo e cultivo local, vem sendo gradualmente substituída por alimentos industrializados e ultraprocessados, à medida que o acesso a alimentos frescos se torna mais difícil, especialmente durante os períodos de estiagem, quando a produção extrativista cai.</p>
       <p>Essa fragilidade também chega às escolas: mais de 1.500 estudantes das ilhas de Belém dependem de merenda escolar transportada por barco, em um trajeto logístico longo e vulnerável às condições do rio. Relatos da gestão escolar nas ilhas apontam ainda que a evasão escolar está diretamente relacionada ao calendário produtivo do açaí e à desconexão entre o currículo escolar e a realidade ribeirinha das famílias.</p>
       <p>O cenário é agravado pelas mudanças climáticas: dados do Sistema de Informações e Análises sobre Impactos das Mudanças Climáticas (AdaptaBrasil), do Ministério da Ciência, Tecnologia e Inovação (MCTI), mostram que 62% dos municípios da Amazônia Legal não possuem condições e estruturas mínimas para enfrentar os efeitos da crise climática, o que coloca a região como a mais vulnerável do país em segurança alimentar (AdaptaBrasil/MCTI, 2023, conforme reportagem da InfoAmazonia). É nesse contexto — de riqueza cultural e biodiversidade extraordinárias, mas também de vulnerabilidade estrutural — que o Coozilhas atua.</p>
+            </div>
+            <div class="callout">
+              <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+              <p>+1.500 estudantes das ilhas de Belém dependem de merenda escolar transportada por barco — um trajeto vulnerável às condições do rio.</p>
+            </div>
+            <p class="sources">Fontes: IBGE/PNAD Contínua (2024, 2021); Rede Brasileira de Pesquisa em Soberania e Segurança Alimentar e Nutricional (Rede PENSSAN); AdaptaBrasil/MCTI (2023, via reportagem da InfoAmazonia); estudos acadêmicos sobre populações ribeirinhas do Pará e do Amazonas.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="callout reveal">
-      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-      <p>+1.500 estudantes das ilhas de Belém dependem de merenda escolar transportada por barco — um trajeto vulnerável às condições do rio.</p>
-    </div>
-    <p class="sources reveal">Fontes: IBGE/PNAD Contínua (2024, 2021); Rede Brasileira de Pesquisa em Soberania e Segurança Alimentar e Nutricional (Rede PENSSAN); AdaptaBrasil/MCTI (2023, via reportagem da InfoAmazonia); estudos acadêmicos sobre populações ribeirinhas do Pará e do Amazonas.</p>
   </div>
 </section>
 
@@ -369,6 +402,9 @@
     </div>
     <div class="prose reveal" style="margin-top:2.4rem;text-align:center">
       <p style="font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:var(--fs-lead);color:var(--brown-deep);line-height:1.5">O resultado que buscamos coletivamente são novas fontes de geração de renda e o acesso a uma alimentação mais segura.</p>
+    </div>
+    <div class="cta-end reveal">
+      <a href="#contatos" class="cta-link">Quero apoiar o projeto<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
     </div>
   </div>
 </section>
@@ -454,6 +490,9 @@
         </div>
       </div>
     </article>
+    <div class="cta-end reveal">
+      <a href="#contatos" class="cta-link">Quero fazer parte dessa história<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -481,6 +520,9 @@
       </div>
       <div class="tl"><div class="tl-body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h5"/></svg>Orçamento técnico</h3><p>Construção do orçamento técnico das obras e dos equipamentos necessários para cada cozinha-escola.</p></div></div>
       <div class="tl current"><div class="tl-body"><span class="tag">Fase atual</span><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>Prontos para iniciar as obras das cozinhas-escola</h3><p>No Combu (Boá na Ilha) e em Cotijuba (sede do MMIB). O diagnóstico, as capacitações e o orçamento técnico já estão prontos — falta agora dar início à construção, e é exatamente neste momento que buscamos parceiros.</p></div></div>
+    </div>
+    <div class="cta-end reveal">
+      <a href="#contatos" class="cta-link">Quero apoiar as obras<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
     </div>
   </div>
 </section>
@@ -673,6 +715,21 @@
         if(Math.abs(dx)>40){ dx<0?go(i+1):go(i-1); }
         x0=null;
       },{passive:true});
+    });
+  })();
+
+  /* ---- expandable detail cards ---- */
+  (function(){
+    document.querySelectorAll('.detail-toggle').forEach(function(btn){
+      var lbl=btn.querySelector('.dt-label');
+      btn.addEventListener('click',function(){
+        var open=btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded', open?'false':'true');
+        if(lbl){
+          lbl.textContent = open ? btn.getAttribute('data-label-closed')
+                                 : btn.getAttribute('data-label-open');
+        }
+      });
     });
   })();
 
