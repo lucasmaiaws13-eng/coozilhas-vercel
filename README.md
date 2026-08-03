@@ -1,4 +1,4 @@
-# Site Coozilhas — Proposta de parceria Tramontina
+# Site Coozilhas — Convite a parceiros
 
 Site institucional estático (HTML/CSS/JS puro, sem build). Pronto para publicar no Vercel.
 
