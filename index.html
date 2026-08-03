@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coozilhas — Duas cozinhas-escola prontas para sair do papel">
 <meta property="og:description" content="Segurança alimentar, geração de renda e valorização da cultura amazônica nas ilhas de Belém. Uma realização Cria Cesupa.">
-<meta property="og:image" content="img/acaizal.jpg">
+<meta property="og:image" content="img/boa-interior.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -244,26 +244,6 @@
   .plant3d .btn-row{justify-content:center}
   @media(min-width:820px){.plant3d .btn-row{justify-content:flex-start}}
 
-  /* ---------- themes accordion ---------- */
-  .themes{display:grid;gap:.9rem;max-width:860px;margin-inline:auto}
-  .theme{background:var(--cream);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .theme-head{width:100%;display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit}
-  .theme-ico{width:46px;height:46px;border-radius:12px;background:color-mix(in srgb,var(--tc) 14%,transparent);display:grid;place-items:center;flex:none;color:var(--tc)}
-  .theme-ico svg{width:25px;height:25px}
-  .theme-title{flex:1;display:flex;flex-direction:column;gap:.1rem}
-  .theme-title strong{font-family:'Fraunces';font-weight:500;font-size:1.2rem;color:var(--brown-deep)}
-  .theme-title small{font-size:.76rem;color:#8a7461;letter-spacing:.04em}
-  .theme-chev{width:22px;height:22px;color:var(--brown);flex:none;transition:transform .35s ease}
-  .theme-head[aria-expanded="true"] .theme-chev{transform:rotate(180deg)}
-  .theme-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
-  .theme-head[aria-expanded="true"]+.theme-body{grid-template-rows:1fr}
-  .theme-inner{overflow:hidden;display:grid;gap:.8rem;padding:0 1.4rem}
-  .theme-head[aria-expanded="true"]+.theme-body .theme-inner{padding-bottom:1.4rem}
-  .metric{border-left:3px solid var(--line);padding:.3rem 0 .3rem 1rem}
-  .m-goal{font-weight:600;color:var(--brown-deep);font-size:.97rem;line-height:1.45}
-  .m-ind{margin-top:.35rem;font-size:.89rem;color:#4a3627;line-height:1.5}
-  .m-ind span{color:var(--acai);font-weight:600}
-
   /* ---------- contact ---------- */
   .contact-grid{display:grid;grid-template-columns:1fr;gap:1.3rem;max-width:840px;margin-inline:auto}
   @media(min-width:680px){.contact-grid{grid-template-columns:1fr 1fr}}
@@ -286,8 +266,8 @@
   /* ---------- motion ---------- */
   .reveal{opacity:0;transform:translateY(34px);filter:blur(4px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),filter .8s ease}
   .reveal.in{opacity:1;transform:none;filter:none}
-  .pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.themes .theme,.hero-meta span,.stats .stat{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
-  .in-stagger .pillar,.in-stagger .who-card,.in-stagger .way,.in-stagger .step,.in-stagger .place,.in-stagger .tl,.in-stagger .theme,.in-stagger .stat,.hero-in.in-stagger span{opacity:1;transform:none}
+  .pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.hero-meta span,.stats .stat{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+  .in-stagger .pillar,.in-stagger .who-card,.in-stagger .way,.in-stagger .step,.in-stagger .place,.in-stagger .tl,.in-stagger .stat,.hero-in.in-stagger span{opacity:1;transform:none}
   .in-stagger>*:nth-child(1){transition-delay:.05s}
   .in-stagger>*:nth-child(2){transition-delay:.13s}
   .in-stagger>*:nth-child(3){transition-delay:.21s}
@@ -296,7 +276,7 @@
   .in-stagger>*:nth-child(6){transition-delay:.45s}
   .stat.pop .num{animation:popNum .6s cubic-bezier(.34,1.56,.64,1)}
   @keyframes popNum{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
-  @media(prefers-reduced-motion:reduce){.reveal,.pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.themes .theme,.hero-meta span,.stats .stat{opacity:1;transform:none;filter:none;transition:none}html{scroll-behavior:auto}.place:hover figure img,.pillar:hover{transform:none}.qc-slide{animation:none}}
+  @media(prefers-reduced-motion:reduce){.reveal,.pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.hero-meta span,.stats .stat{opacity:1;transform:none;filter:none;transition:none}html{scroll-behavior:auto}.place:hover figure img,.pillar:hover{transform:none}.qc-slide{animation:none}}
   :focus-visible{outline:2.5px solid var(--acai);outline-offset:3px;border-radius:4px}
   .band-ink :focus-visible,.hero :focus-visible{outline-color:var(--gold)}
 </style>
@@ -318,7 +298,7 @@
 </header>
 
 <section class="hero" id="topo">
-  <div class="hero-bg"><img src="img/acaizal.jpg" alt="Interior do restaurante Boá na Ilha, no Combu"></div>
+  <div class="hero-bg"><img src="img/boa-interior.jpg" alt="Interior do restaurante Boá na Ilha, no Combu"></div>
   <div class="wrap hero-in">
     <img class="hero-logo" src="img/logo-transp.png" alt="Coozilhas">
     <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M8 21h8a4 4 0 0 0 4-4v-1H4v1a4 4 0 0 0 4 4zM4 12h16"/></svg></span>Convite a parceiros</span>
@@ -400,8 +380,8 @@
       <h2>Ilha do Combu e Ilha de Cotijuba</h2>
     </div>
     <div class="place-grid">
-      <div class="place"><figure><img src="img/mmib-grupo.jpg" alt="Grupo reunido no espaço do restaurante Boá na Ilha, no Combu"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Combu</div><h3>Boá na Ilha</h3><p>Boá, o proprietário do restaurante, já possui reconhecimento enquanto uma das lideranças da Ilha e serve como mediador nos processos de garantia de qualidade de vida — onde nasce uma das cozinhas-escola.</p></div></div>
-      <div class="place"><figure><img src="img/boa-fachada.jpg" alt="Viveiro de mudas usado na produção de hortaliças e plantas"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</div><h3>Sede do MMIB</h3><p>Movimento das Mulheres das Ilhas de Belém: mais de 25 anos de organização comunitária, geração de renda e saberes tradicionais.</p></div></div>
+      <div class="place"><figure><img src="img/boa-grupo.jpg" alt="Grupo reunido no espaço do restaurante Boá na Ilha, no Combu"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Combu</div><h3>Boá na Ilha</h3><p>Boá, o proprietário do restaurante, já possui reconhecimento enquanto uma das lideranças da Ilha e serve como mediador nos processos de garantia de qualidade de vida — onde nasce uma das cozinhas-escola.</p></div></div>
+      <div class="place"><figure><img src="img/quintal-viveiro.jpg" alt="Viveiro de mudas usado na produção de hortaliças e plantas"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</div><h3>Sede do MMIB</h3><p>Movimento das Mulheres das Ilhas de Belém: mais de 25 anos de organização comunitária, geração de renda e saberes tradicionais.</p></div></div>
     </div>
   </div>
 </section>
@@ -454,7 +434,7 @@
     <article class="person reveal">
       <div class="person-head"><span class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</span><h3>MMIB — Movimento das Mulheres das Ilhas de Belém</h3></div>
       <div class="person-grid">
-        <div class="person-media"><img src="img/boa-visita.jpg" alt="Equipe do projeto em visita de campo à Ilha de Cotijuba"></div>
+        <div class="person-media"><img src="img/cotijuba-visita.jpg" alt="Equipe do projeto em visita de campo à Ilha de Cotijuba"></div>
         <div class="prose">
           <p>O MMIB nasceu da união de mulheres que acreditam na força da organização comunitária. O movimento começou como um pequeno grupo dentro da Associação de Produtores da Ilha de Cotijuba, fazendo doces, compotas e geleias para gerar renda e fortalecer as mulheres da ilha.</p>
           <p>Ao longo de mais de 25 anos, o grupo cresceu, formou jovens em capacitações de reaproveitamento de recicláveis e confecção de instrumentos musicais, e se tornou uma referência em geração de renda, segurança alimentar, educação ambiental e valorização dos saberes tradicionais.</p>
@@ -490,14 +470,14 @@
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Diagnóstico comunitário</h3>
           <p>Escuta ativa das famílias, lideranças e das mulheres de Combu e Cotijuba para entender as reais necessidades de cada território.</p>
         </div>
-        <div class="tl-thumb"><img src="img/boa-visita.jpg" alt="Equipe do projeto em visita de campo às ilhas"></div>
+        <div class="tl-thumb"><img src="img/cotijuba-visita.jpg" alt="Equipe do projeto em visita de campo às ilhas"></div>
       </div>
       <div class="tl">
         <div class="tl-body">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Formações em boas práticas</h3>
           <p>Boas práticas de manipulação de alimentos, já realizadas com as mulheres das comunidades de Combu e Cotijuba.</p>
         </div>
-        <div class="tl-thumb"><img src="img/mmib-sebrae.jpg" alt="Turma do curso de boas práticas de manipulação de alimentos com seus certificados, no Boá na Ilha"></div>
+        <div class="tl-thumb"><img src="img/curso-boas-praticas.jpg" alt="Turma do curso de boas práticas de manipulação de alimentos com seus certificados, no Boá na Ilha"></div>
       </div>
       <div class="tl"><div class="tl-body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h5"/></svg>Orçamento técnico</h3><p>Construção do orçamento técnico das obras e dos equipamentos necessários para cada cozinha-escola.</p></div></div>
       <div class="tl current"><div class="tl-body"><span class="tag">Fase atual</span><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>Prontos para iniciar as obras das cozinhas-escola</h3><p>No Combu (Boá na Ilha) e em Cotijuba (sede do MMIB). O diagnóstico, as capacitações e o orçamento técnico já estão prontos — falta agora dar início à construção, e é exatamente neste momento que buscamos parceiros.</p></div></div>
@@ -583,72 +563,6 @@
   </div>
 </section>
 
-<section id="resultados">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>Resultados esperados</span>
-      <h2>O que buscamos e como medimos</h2>
-      <p class="lead">Organizamos nossos resultados em quatro grandes eixos de impacto. Cada meta vem com o indicador que usaremos para medi-la.</p>
-    </div>
-    <div class="themes">
-      <div class="theme" data-theme>
-        <button class="theme-head" aria-expanded="true">
-          <span class="theme-ico" style="--tc:#4E6636"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></span>
-          <span class="theme-title"><strong>Alimentação segura</strong><small>3 metas</small></span>
-          <svg class="theme-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="theme-body">
-          <div class="theme-inner">
-            <div class="metric"><p class="m-goal">Produção e manuseio de alimentos com equipamentos apropriados</p><p class="m-ind"><span>Como medimos:</span> nível de satisfação dos responsáveis pelas cozinhas.</p></div>
-            <div class="metric"><p class="m-goal">Empoderamento das comunidades em práticas de alimentação saudável</p><p class="m-ind"><span>Como medimos:</span> nº de participantes nos workshops; avaliação (NPS); conhecimento adquirido antes e depois, via questionários.</p></div>
-            <div class="metric"><p class="m-goal">Menos contaminação, prevenção de doenças e mais qualidade nutricional</p><p class="m-ind"><span>Como medimos:</span> redução do desperdício alimentar e maior aproveitamento nutricional.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="theme" data-theme>
-        <button class="theme-head" aria-expanded="false">
-          <span class="theme-ico" style="--tc:#5A2F47"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
-          <span class="theme-title"><strong>Geração de renda</strong><small>3 metas</small></span>
-          <svg class="theme-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="theme-body">
-          <div class="theme-inner">
-            <div class="metric"><p class="m-goal">Redução de custos e aumento do poder de compra</p><p class="m-ind"><span>Como medimos:</span> nº de grupos de compra formados; economias geradas com compras coletivas.</p></div>
-            <div class="metric"><p class="m-goal">Nova fonte de renda a partir do que é ensinado e produzido pela comunidade</p><p class="m-ind"><span>Como medimos:</span> nº de participantes nos workshops; avaliação (NPS); mudança de hábitos alimentares em 1–2 meses; conhecimento adquirido (pré e pós).</p></div>
-            <div class="metric"><p class="m-goal">Oportunidade de vendas</p><p class="m-ind"><span>Como medimos:</span> nº de grupos locais e conexões formados para esse propósito.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="theme" data-theme>
-        <button class="theme-head" aria-expanded="false">
-          <span class="theme-ico" style="--tc:#6E523E"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-          <span class="theme-title"><strong>Educação e autonomia</strong><small>2 metas</small></span>
-          <svg class="theme-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="theme-body">
-          <div class="theme-inner">
-            <div class="metric"><p class="m-goal">Materiais didáticos acessíveis, compartilháveis com outras ilhas e comunidades</p><p class="m-ind"><span>Como medimos:</span> nº de pessoas com acesso aos materiais, com foco em mulheres ribeirinhas, especialmente jovens.</p></div>
-            <div class="metric"><p class="m-goal">Aprendizado sobre empreendedorismo</p><p class="m-ind"><span>Como medimos:</span> nº de cópias distribuídas, com base online.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="theme" data-theme>
-        <button class="theme-head" aria-expanded="false">
-          <span class="theme-ico" style="--tc:#4E6636"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V9M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 12c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></span>
-          <span class="theme-title"><strong>Produção local</strong><small>2 metas</small></span>
-          <svg class="theme-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="theme-body">
-          <div class="theme-inner">
-            <div class="metric"><p class="m-goal">Expansão da produção local com os quintais produtivos</p><p class="m-ind"><span>Como medimos:</span> nº de famílias com hortas implementadas.</p></div>
-            <div class="metric"><p class="m-goal">Mais aprendizado e autonomia na implementação dos quintais</p><p class="m-ind"><span>Como medimos:</span> nº de guias distribuídos × nº de hortas familiares criadas.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer id="contatos" class="band-ink" style="padding:clamp(3.6rem,8vw,6.5rem) 0">
   <div class="wrap">
     <div class="section-head reveal">
@@ -669,7 +583,7 @@
 
   /* ---- reveal + stagger + number count ---- */
   (function(){
-    var staggerSel = '.stats,.pillars,.who,.ways,.steps,.place-grid,.timeline,.themes,.hero-in';
+    var staggerSel = '.stats,.pillars,.who,.ways,.steps,.place-grid,.timeline,.hero-in';
     document.querySelectorAll(staggerSel).forEach(function(el){el.setAttribute('data-stagger','');});
     var revealEls = document.querySelectorAll('.reveal');
     var staggerEls = document.querySelectorAll('[data-stagger]');
@@ -759,16 +673,6 @@
         if(Math.abs(dx)>40){ dx<0?go(i+1):go(i-1); }
         x0=null;
       },{passive:true});
-    });
-  })();
-
-  /* ---- themes accordion ---- */
-  (function(){
-    document.querySelectorAll('[data-theme] .theme-head').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var open=btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded', open?'false':'true');
-      });
     });
   })();
 
