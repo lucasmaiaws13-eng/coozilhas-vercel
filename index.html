@@ -62,14 +62,11 @@
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,11,5,.62) 0%,rgba(18,11,5,.4) 32%,rgba(18,11,5,.68) 68%,rgba(13,8,4,.95) 100%)}
   .hero-in{position:relative;z-index:1;width:100%;padding:7rem 22px 3rem;display:flex;flex-direction:column;align-items:center}
   .hero-logo{width:min(230px,64vw);margin-bottom:1.8rem;filter:drop-shadow(0 4px 18px rgba(0,0,0,.45))}
-  .hero .eyebrow{color:#F0DEC6;justify-content:center}
-  .hero .eyebrow svg{color:var(--gold)}
   .hero h1{font-size:var(--fs-display);font-weight:400;max-width:17ch;text-shadow:0 2px 24px rgba(0,0,0,.5)}
   .hero h1 em{font-style:italic;color:#F0DEC6}
-  .hero-sub{margin:1.3rem auto 0;max-width:48ch;font-size:var(--fs-lead);color:#F4EADB;font-weight:400;line-height:1.55;text-shadow:0 1px 12px rgba(0,0,0,.55)}
-  .hero-meta{margin:2.2rem auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.8rem;font-size:.82rem;letter-spacing:.03em;color:#EFE0CB;border-top:1px solid rgba(240,222,198,.3);padding-top:1.2rem;max-width:680px}
-  .hero-meta span{display:inline-flex;align-items:center;gap:.5rem}
-  .hero-meta span svg{width:15px;height:15px;color:var(--gold)}
+  .hero-rule{width:64px;height:2px;background:var(--gold);margin:1.9rem auto 1.6rem;opacity:.9}
+  .hero-kicker{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.35;color:#F0DEC6;max-width:24ch;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+  .hero-sub{margin:1.1rem auto 0;max-width:52ch;font-size:var(--fs-lead);color:#F4EADB;font-weight:400;line-height:1.55;text-shadow:0 1px 12px rgba(0,0,0,.55)}
 
   /* ---------- sections / centered editorial rhythm ---------- */
   section{padding:clamp(3.6rem,8vw,7rem) 0}
@@ -88,13 +85,6 @@
   .band-ink .section-head p.lead{color:#F1E1C8}
   .band-ink .prose p{color:#F6EAD9}
   .band-ink strong{color:#fff}
-
-  /* ---------- pull / opening statement ---------- */
-  .statement{padding:clamp(3.4rem,8vw,6rem) 0;background:var(--cream-2);border-bottom:1px solid var(--line)}
-  .statement .inner{max-width:56ch;margin:0 auto;text-align:center}
-  .statement h2{font-size:clamp(1.6rem,4vw,2.6rem);color:var(--brown-deep);font-weight:400;font-style:italic}
-  .statement p{margin-top:1.3rem;font-size:var(--fs-lead);color:var(--brown);line-height:1.6}
-  .statement .rule{width:56px;height:2px;background:var(--gold);margin:0 auto 1.8rem}
 
   /* ---------- stats ---------- */
   .stats{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0 auto clamp(2.2rem,5vw,3rem);max-width:980px}
@@ -297,7 +287,7 @@
   /* ---------- motion ---------- */
   .reveal{opacity:0;transform:translateY(34px);filter:blur(4px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),filter .8s ease}
   .reveal.in{opacity:1;transform:none;filter:none}
-  .pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.hero-meta span,.stats .stat{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+  .pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.stats .stat{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
   .in-stagger .pillar,.in-stagger .who-card,.in-stagger .way,.in-stagger .step,.in-stagger .place,.in-stagger .tl,.in-stagger .stat,.hero-in.in-stagger span{opacity:1;transform:none}
   .in-stagger>*:nth-child(1){transition-delay:.05s}
   .in-stagger>*:nth-child(2){transition-delay:.13s}
@@ -307,7 +297,7 @@
   .in-stagger>*:nth-child(6){transition-delay:.45s}
   .stat.pop .num{animation:popNum .6s cubic-bezier(.34,1.56,.64,1)}
   @keyframes popNum{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
-  @media(prefers-reduced-motion:reduce){.reveal,.pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.hero-meta span,.stats .stat{opacity:1;transform:none;filter:none;transition:none}html{scroll-behavior:auto}.place:hover figure img,.pillar:hover{transform:none}.qc-slide{animation:none}}
+  @media(prefers-reduced-motion:reduce){.reveal,.pillars .pillar,.who .who-card,.ways .way,.steps .step,.place-grid .place,.timeline .tl,.stats .stat{opacity:1;transform:none;filter:none;transition:none}html{scroll-behavior:auto}.place:hover figure img,.pillar:hover{transform:none}.qc-slide{animation:none}}
   :focus-visible{outline:2.5px solid var(--acai);outline-offset:3px;border-radius:4px}
   .band-ink :focus-visible,.hero :focus-visible{outline-color:var(--gold)}
 </style>
@@ -332,24 +322,10 @@
   <div class="hero-bg"><img src="img/boa-interior.jpg" alt="Interior do restaurante Boá na Ilha, no Combu"></div>
   <div class="wrap hero-in">
     <img class="hero-logo" src="img/logo-transp.png" alt="Coozilhas">
-    <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M8 21h8a4 4 0 0 0 4-4v-1H4v1a4 4 0 0 0 4 4zM4 12h16"/></svg></span>Convite a parceiros</span>
-    <h1>Segurança alimentar e cultura amazônica nas <em>ilhas de Belém</em></h1>
-    <p class="hero-sub">Geração de renda e valorização dos saberes ribeirinhos no Combu e em Cotijuba. Uma realização Cria Cesupa.</p>
-    <div class="hero-meta">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>39 ilhas em Belém</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 20v-2a4 4 0 0 0-3-3.87M16 2.13a4 4 0 0 1 0 7.75"/></svg>+78 mil pessoas na região insular</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>2 comunidades ribeirinhas</span>
-    </div>
-  </div>
-</section>
-
-<section class="statement">
-  <div class="wrap">
-    <div class="inner reveal">
-      <div class="rule"></div>
-      <h2>Duas cozinhas-escola, prontas para sair do papel</h2>
-      <p>No Combu e em Cotijuba, o diagnóstico já foi feito, as mulheres estão sendo capacitadas e o projeto técnico já está pronto. Agora falta transformar o que está no papel em realidade — e para isso contamos com você.</p>
-    </div>
+    <h1>Segurança alimentar e geração de renda nas <em>ilhas de Belém</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-kicker">Duas cozinhas-escola, prontas para sair do papel</p>
+    <p class="hero-sub">No Combu e em Cotijuba, o diagnóstico já foi feito, as mulheres estão sendo capacitadas e o projeto técnico já está pronto. Agora falta transformar o que está no papel em realidade e para isso contamos com você.</p>
   </div>
 </section>
 
@@ -366,7 +342,7 @@
     </div>
     <div class="detail reveal">
       <div class="detail-summary">
-        <p>A Região Norte tem o maior índice de insegurança alimentar do país, e o Pará lidera esse cenário. Nas 39 ilhas de Belém, a dieta tradicional ribeirinha — pesca, extrativismo e cultivo local — vem sendo substituída por alimentos ultraprocessados, à medida que o acesso a alimentos frescos se torna mais difícil, sobretudo nos períodos de estiagem. As mudanças climáticas agravam o quadro.</p>
+        <p>44,6% das famílias paraenses convivem com algum grau de dificuldade para acessar alimentos, e o estado tem um dos maiores índices de insegurança alimentar grave do país, ao lado do Amapá e do Amazonas (IBGE, PNAD Contínua, 2024).</p>
       </div>
       <button class="detail-toggle" aria-expanded="false" data-label-closed="Saiba mais" data-label-open="Mostrar menos">
         <span class="dt-label">Saiba mais</span>
@@ -376,7 +352,6 @@
         <div class="detail-inner">
           <div class="detail-pad">
             <div class="prose">
-      <p>44,6% das famílias paraenses convivem com algum grau de dificuldade para acessar alimentos, e o estado tem um dos maiores índices de insegurança alimentar grave do país, ao lado do Amapá e do Amazonas (IBGE, PNAD Contínua, 2024).</p>
       <p>A Região Norte, que concentra a maior parte da Amazônia brasileira, é apontada pela Rede PENSSAN como a região com o maior índice de insegurança alimentar do país, afetando de forma desproporcional mulheres, famílias negras e populações rurais.</p>
       <p>Belém possui 39 ilhas, e mais de 78 mil pessoas vivem apenas na sua região insular (IBGE, 2021). Estudos acadêmicos sobre comunidades ribeirinhas amazônicas documentam uma transição alimentar preocupante: a dieta tradicional, baseada em pesca, extrativismo e cultivo local, vem sendo gradualmente substituída por alimentos industrializados e ultraprocessados, à medida que o acesso a alimentos frescos se torna mais difícil, especialmente durante os períodos de estiagem, quando a produção extrativista cai.</p>
       <p>Essa fragilidade também chega às escolas: mais de 1.500 estudantes das ilhas de Belém dependem de merenda escolar transportada por barco, em um trajeto logístico longo e vulnerável às condições do rio. Relatos da gestão escolar nas ilhas apontam ainda que a evasão escolar está diretamente relacionada ao calendário produtivo do açaí e à desconexão entre o currículo escolar e a realidade ribeirinha das famílias.</p>
@@ -404,8 +379,12 @@
     <div class="prose reveal">
       <p>As duas comunidades ribeirinhas abarcadas ficam na Ilha do Combu e na Ilha de Cotijuba. O projeto nasce da escuta e interação com as comunidades e se apoia em duas referências locais que já são pontos de encontro e de força para as famílias de cada ilha: o restaurante Boá na Ilha, no Combu, e a sede do MMIB (Movimento das Mulheres das Ilhas de Belém), em Cotijuba.</p>
     </div>
+    <div class="place-grid" style="margin-top:clamp(2rem,4vw,2.8rem)">
+      <div class="place"><figure><img src="img/boa-grupo.jpg" alt="Grupo reunido no espaço do restaurante Boá na Ilha, no Combu"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Combu</div><h3>Boá na Ilha</h3><p>Boá, o proprietário do restaurante, já possui reconhecimento enquanto uma das lideranças da Ilha e serve como mediador nos processos de garantia de qualidade de vida — onde nasce uma das cozinhas-escola.</p></div></div>
+      <div class="place"><figure><img src="img/quintal-viveiro.jpg" alt="Viveiro de mudas usado na produção de hortaliças e plantas"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</div><h3>Sede do MMIB</h3><p>Movimento das Mulheres das Ilhas de Belém: mais de 25 anos de organização comunitária, geração de renda e saberes tradicionais.</p></div></div>
+    </div>
     <div class="section-head reveal" style="margin-top:clamp(2.8rem,6vw,4rem)">
-      <h2 style="font-size:var(--fs-h3)">Na prática, o Coozilhas se organiza em quatro frentes que caminham juntas</h2>
+      <h2 style="font-size:var(--fs-h3)">Na prática, o Coozilhas se organiza em quatro frentes de atuação, que caminham juntas</h2>
     </div>
     <div class="pillars">
       <div class="pillar"><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></div><h3>Cozinhas-escola</h3><p>A serem construídas em cada sede, para fomentar o conhecimento das mulheres das comunidades sobre a teoria e a prática da segurança alimentar, com impacto direto na alimentação das famílias e das escolas da região.</p></div>
@@ -422,20 +401,7 @@
   </div>
 </section>
 
-<section id="onde">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Onde atuamos</span>
-      <h2>Ilha do Combu e Ilha de Cotijuba</h2>
-    </div>
-    <div class="place-grid">
-      <div class="place"><figure><img src="img/boa-grupo.jpg" alt="Grupo reunido no espaço do restaurante Boá na Ilha, no Combu"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Combu</div><h3>Boá na Ilha</h3><p>Boá, o proprietário do restaurante, já possui reconhecimento enquanto uma das lideranças da Ilha e serve como mediador nos processos de garantia de qualidade de vida — onde nasce uma das cozinhas-escola.</p></div></div>
-      <div class="place"><figure><img src="img/quintal-viveiro.jpg" alt="Viveiro de mudas usado na produção de hortaliças e plantas"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</div><h3>Sede do MMIB</h3><p>Movimento das Mulheres das Ilhas de Belém: mais de 25 anos de organização comunitária, geração de renda e saberes tradicionais.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="quem" class="band-cream2">
+<section id="quem">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Quem faz parte</span>
@@ -556,8 +522,8 @@
 <section id="formas" class="band-cream2">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>Formas de apoiar</span>
-      <h2>Cinco formas de entrar nessa construção</h2>
+      <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>Parcerias</span>
+      <h2>Formas de apoiar o Coozilhas</h2>
     </div>
     <div class="ways">
       <div class="way way-lg" style="--tc:#4E6636">
