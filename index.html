@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coozilhas — Duas cozinhas-escola prontas para sair do papel">
 <meta property="og:description" content="Segurança alimentar, geração de renda e valorização da cultura amazônica nas ilhas de Belém. Uma realização Cria Cesupa.">
-<meta property="og:image" content="img/boa-interior.jpg">
+<meta property="og:image" content="img/ilhas-aerea.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +40,7 @@
   .eyebrow{display:inline-flex;align-items:center;gap:.65rem;font-family:'Inter';font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--brown);margin-bottom:1.1rem}
   .eyebrow .ico-chip{width:26px;height:26px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;flex:none}
   .eyebrow svg{width:15px;height:15px;flex:none;color:var(--acai)}
+  .band-cream2 .eyebrow .ico-chip{background:var(--cream)}
   .band-ink .eyebrow .ico-chip{background:rgba(246,236,220,.14)}
   .band-ink .eyebrow svg{color:var(--gold)}
   .hero .eyebrow .ico-chip{background:rgba(240,222,198,.16)}
@@ -59,13 +60,13 @@
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0;background:#2b1d12}
   .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,11,5,.62) 0%,rgba(18,11,5,.4) 32%,rgba(18,11,5,.68) 68%,rgba(13,8,4,.95) 100%)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,11,5,.30) 0%,rgba(18,11,5,.20) 30%,rgba(18,11,5,.52) 66%,rgba(13,8,4,.92) 100%)}
   .hero-in{position:relative;z-index:1;width:100%;padding:7rem 22px 3rem;display:flex;flex-direction:column;align-items:center}
   .hero-logo{width:min(230px,64vw);margin-bottom:1.8rem;filter:drop-shadow(0 4px 18px rgba(0,0,0,.45))}
   .hero h1{font-size:var(--fs-display);font-weight:400;max-width:17ch;text-shadow:0 2px 24px rgba(0,0,0,.5)}
   .hero h1 em{font-style:italic;color:#F0DEC6}
   .hero-rule{width:64px;height:2px;background:var(--gold);margin:1.9rem auto 1.6rem;opacity:.9}
-  .hero-kicker{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.35;color:#F0DEC6;max-width:24ch;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+  .hero-kicker{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.35;color:#F0DEC6;max-width:34ch;text-shadow:0 1px 14px rgba(0,0,0,.55);text-wrap:balance}
   .hero-sub{margin:1.1rem auto 0;max-width:52ch;font-size:var(--fs-lead);color:#F4EADB;font-weight:400;line-height:1.55;text-shadow:0 1px 12px rgba(0,0,0,.55)}
 
   /* ---------- sections / centered editorial rhythm ---------- */
@@ -74,6 +75,32 @@
   .section-head .eyebrow{justify-content:center}
   .section-head h2{font-size:var(--fs-h2);color:var(--brown-deep)}
   .section-head p.lead{margin:1.1rem auto 0;font-size:var(--fs-lead);color:var(--brown);line-height:1.6;max-width:60ch}
+
+  /* destaque invertido: o rotulo lidera, o titulo apoia
+     (a hierarquia do HTML nao muda — h2 continua sendo h2) */
+  .section-head:not(.head-plain) .eyebrow,
+  .plant3d .eyebrow{
+    display:flex;flex-direction:column;align-items:center;gap:.8rem;
+    font-family:'Fraunces',Georgia,serif;font-size:var(--fs-h2);font-weight:500;
+    letter-spacing:-.01em;text-transform:none;line-height:1.1;
+    color:var(--brown-deep);margin-bottom:.8rem;text-wrap:balance
+  }
+  .section-head:not(.head-plain) .eyebrow .ico-chip,
+  .plant3d .eyebrow .ico-chip{width:48px;height:48px}
+  .section-head:not(.head-plain) .eyebrow svg,
+  .plant3d .eyebrow svg{width:25px;height:25px}
+  .section-head:not(.head-plain) h2{
+    display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:.72rem;
+    font-weight:600;letter-spacing:.18em;text-transform:uppercase;line-height:1.4;
+    padding:.5rem 1.05rem;border-radius:100px;
+    background:var(--cream-2);border:1px solid var(--line);color:var(--brown-deep)
+  }
+  .band-cream2 .section-head:not(.head-plain) h2{background:var(--cream)}
+  .band-ink .section-head:not(.head-plain) .eyebrow{color:#fff}
+  .band-ink .section-head:not(.head-plain) h2{
+    background:rgba(246,236,220,.12);border-color:rgba(240,222,198,.28);color:#F0DEC6
+  }
+  @media(min-width:820px){.plant3d .eyebrow{align-items:flex-start}}
   p+p{margin-top:1.05rem}
   .prose{max-width:var(--measure);margin-inline:auto}
   .prose p{color:#3a2a1c}
@@ -258,7 +285,8 @@
   .plant3d .art svg{width:56px;height:56px;color:var(--gold)}
   .plant3d .eyebrow{justify-content:center}
   @media(min-width:820px){.plant3d .eyebrow{justify-content:flex-start}}
-  .plant3d h3{font-family:'Fraunces';font-size:var(--fs-h3);color:var(--brown-deep);margin-bottom:.6rem}
+  .plant3d h3{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;line-height:1.4;padding:.5rem 1.05rem;border-radius:100px;background:var(--cream-2);border:1px solid var(--line);color:var(--brown-deep);margin-bottom:.9rem}
+  .band-cream2 .plant3d h3{background:var(--cream)}
   .plant3d p{font-size:.98rem;color:#4a3627;line-height:1.65}
   .plant3d .btn-primary{background:var(--acai);color:var(--cream);margin-top:1.4rem}
   .plant3d .btn-primary:hover{background:var(--acai-deep)}
@@ -313,18 +341,19 @@
       <a href="#pessoas">As pessoas</a>
       <a href="#chegamos">Onde chegamos</a>
       <a href="#apoiar">Como apoiar</a>
+      <a href="#contrapartidas">Contrapartidas</a>
     </nav>
     <a href="#contatos" class="nav-cta">Falar com a equipe</a>
   </div>
 </header>
 
 <section class="hero" id="topo">
-  <div class="hero-bg"><img src="img/boa-interior.jpg" alt="Interior do restaurante Boá na Ilha, no Combu"></div>
+  <div class="hero-bg"><img src="img/ilhas-aerea.jpg" alt="Vista aérea de uma das ilhas de Belém, com a comunidade ribeirinha à beira do rio"></div>
   <div class="wrap hero-in">
     <img class="hero-logo" src="img/logo-transp.png" alt="Coozilhas">
     <h1>Segurança alimentar e geração de renda nas <em>ilhas de Belém</em></h1>
     <div class="hero-rule"></div>
-    <p class="hero-kicker">Duas cozinhas-escola, prontas para sair do papel</p>
+    <p class="hero-kicker">Duas cozinhas-escola,<br>prontas para sair do papel</p>
     <p class="hero-sub">No Combu e em Cotijuba, o diagnóstico já foi feito, as mulheres estão sendo capacitadas e o projeto técnico já está pronto. Agora falta transformar o que está no papel em realidade e para isso contamos com você.</p>
   </div>
 </section>
@@ -383,7 +412,7 @@
       <div class="place"><figure><img src="img/boa-grupo.jpg" alt="Grupo reunido no espaço do restaurante Boá na Ilha, no Combu"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Combu</div><h3>Boá na Ilha</h3><p>Boá, o proprietário do restaurante, já possui reconhecimento enquanto uma das lideranças da Ilha e serve como mediador nos processos de garantia de qualidade de vida — onde nasce uma das cozinhas-escola.</p></div></div>
       <div class="place"><figure><img src="img/quintal-viveiro.jpg" alt="Viveiro de mudas usado na produção de hortaliças e plantas"></figure><div class="cap"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Cotijuba</div><h3>Sede do MMIB</h3><p>Movimento das Mulheres das Ilhas de Belém: mais de 25 anos de organização comunitária, geração de renda e saberes tradicionais.</p></div></div>
     </div>
-    <div class="section-head reveal" style="margin-top:clamp(2.8rem,6vw,4rem)">
+    <div class="section-head head-plain reveal" style="margin-top:clamp(2.8rem,6vw,4rem)">
       <h2 style="font-size:var(--fs-h3)">Na prática, o Coozilhas se organiza em quatro frentes de atuação, que caminham juntas</h2>
     </div>
     <div class="pillars">
@@ -544,6 +573,17 @@
           <span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="contrapartidas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Contrapartidas</span>
+      <h2>O que sua empresa recebe ao apoiar o Coozilhas</h2>
+    </div>
+    <div class="ways">
       <div class="way way-sm" style="--tc:#6E523E">
         <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg></span>
         <h3><a href="#contatos">Visibilidade institucional</a></h3>
@@ -566,7 +606,7 @@
   </div>
 </section>
 
-<section id="planta">
+<section id="planta" class="band-cream2">
   <div class="wrap">
     <div class="plant3d reveal">
       <div class="plant3d-inner">
@@ -584,7 +624,7 @@
   </div>
 </section>
 
-<section id="passos" class="band-cream2">
+<section id="passos">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="ico-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Próximos passos</span>
