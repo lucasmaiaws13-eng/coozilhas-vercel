@@ -224,11 +224,13 @@
   .person-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
   .person-media{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
   .person-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
-  /* no desktop a foto acompanha a altura do texto, sem sobra embaixo */
+  /* no desktop a foto acompanha a altura do texto, sem sobra embaixo.
+     a imagem sai do fluxo (absolute) para nao ditar a altura da linha:
+     com ela no fluxo, a proporcao natural do arquivo esticava a coluna */
   @media(min-width:900px){
     .person-grid{grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:2.8rem;align-items:stretch}
-    .person-media{height:100%;min-height:300px}
-    .person-media img{aspect-ratio:auto;height:100%;max-height:none}
+    .person-media{position:relative;min-height:320px}
+    .person-media img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;max-height:none}
   }
   .person-grid .prose{max-width:58ch;margin-inline:0}
   .person-grid .prose p{font-size:.98rem;line-height:1.72}
