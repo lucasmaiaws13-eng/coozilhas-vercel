@@ -73,6 +73,19 @@
   .hero-rule{width:64px;height:2px;background:var(--gold);margin:1.9rem auto 1.6rem;opacity:.9}
   .hero-kicker{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.35;color:#F0DEC6;max-width:34ch;text-shadow:0 1px 2px rgba(0,0,0,.4),0 1px 18px rgba(0,0,0,.6);text-wrap:balance}
   .hero-sub{margin:1.1rem auto 0;max-width:52ch;font-size:var(--fs-lead);color:#F4EADB;font-weight:400;line-height:1.55;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+  /* abertura: a foto surge do escuro com zoom lento, e o conteudo entra em sequencia */
+  @keyframes heroBg{from{opacity:0;transform:scale(1.14)}to{opacity:1;transform:scale(1)}}
+  @keyframes heroUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  @keyframes heroRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .hero-bg{animation:heroBg 2.8s cubic-bezier(.22,1,.36,1) both}
+  .hero-logo{animation:heroUp 1s cubic-bezier(.22,1,.36,1) .4s both}
+  .hero h1 .w{display:inline-block;animation:heroUp .9s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.75s + var(--i) * 70ms)}
+  .hero-rule{animation:heroRule .9s cubic-bezier(.22,1,.36,1) 1.55s both}
+  .hero-kicker{animation:heroUp .9s cubic-bezier(.22,1,.36,1) 1.75s both}
+  .hero-sub{animation:heroUp .9s cubic-bezier(.22,1,.36,1) 1.95s both}
+  .hero-scroll{animation:heroUp .9s cubic-bezier(.22,1,.36,1) 2.5s both}
+  @media(prefers-reduced-motion:reduce){.hero-bg,.hero-logo,.hero h1 .w,.hero-rule,.hero-kicker,.hero-sub,.hero-scroll{animation:none}}
+
   /* convite a rolar, no canto inferior direito do hero */
   .hero-scroll{position:absolute;z-index:2;right:clamp(16px,3.5vw,44px);bottom:clamp(16px,3vh,34px);
     display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;text-decoration:none;
@@ -172,13 +185,15 @@
   .callout p{font-size:.96rem;color:#3a2a1c;font-weight:500;margin:0}
 
   /* ---------- pillars ---------- */
-  .pillars{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:2.4rem}
+  /* faixa editorial numerada, sem caixas: as divisorias vem do gap de 1px
+     sobre o fundo de linha, e funcionam com 1, 2 ou 4 colunas */
+  .pillars{display:grid;grid-template-columns:1fr;gap:1px;margin-top:2.4rem;background:var(--line);border-top:2px solid var(--brown-deep);border-bottom:1px solid var(--line)}
   @media(min-width:720px){.pillars{grid-template-columns:1fr 1fr}}
-  @media(min-width:1080px){.pillars{grid-template-columns:repeat(4,1fr);gap:1.2rem}}
-  .pillar{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:1.8rem 1.6rem;transition:transform .25s,box-shadow .25s}
-  .pillar:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .pillar .picon{width:48px;height:48px;border-radius:12px;background:var(--cream-2);display:grid;place-items:center;margin-bottom:1rem}
-  .pillar .picon svg{width:26px;height:26px;color:var(--acai)}
+  @media(min-width:1080px){.pillars{grid-template-columns:repeat(4,1fr)}}
+  .pillar{background:var(--cream-2);padding:1.9rem 1.6rem 1.7rem}
+  .pillar .ptop{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
+  .pillar .pnum{font-family:'Fraunces',Georgia,serif;font-size:2.7rem;font-weight:400;line-height:1;color:var(--acai)}
+  .pillar .picon svg{width:26px;height:26px;color:var(--leaf-deep)}
   .pillar h3{font-size:1.24rem;color:var(--brown-deep);margin:0 0 .5rem}
   .pillar p{font-size:.95rem;color:#4a3627;line-height:1.6}
 
@@ -216,9 +231,14 @@
   /* no desktop as duas colunas compartilham as linhas (foto, titulo, texto,
      citacoes): cada bloco comeca na mesma altura dos dois lados, mesmo com
      textos de tamanhos diferentes */
+  /* separador entre as duas liderancas: horizontal no celular, vertical no desktop */
+  .duo{position:relative}
+  .person+.person{border-top:1px solid rgba(201,162,39,.5);padding-top:clamp(3rem,8vw,4rem)}
   @media(min-width:900px){
-    .duo{grid-template-columns:1fr 1fr;column-gap:clamp(2rem,4vw,3.4rem);row-gap:0}
+    .duo{grid-template-columns:1fr 1fr;column-gap:clamp(3.2rem,6vw,5.4rem);row-gap:0}
+    .duo::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom,transparent,rgba(201,162,39,.55) 8%,rgba(201,162,39,.55) 92%,transparent)}
     .person{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:1.4rem}
+    .person+.person{border-top:none;padding-top:0}
   }
 
   /* ---------- quote carousel ---------- */
@@ -242,13 +262,20 @@
   .qc-dot.active{background:var(--gold);width:26px;border-radius:5px}
 
   /* ---------- linha do tempo: feito, fase atual e proximas etapas ---------- */
-  .timeline{margin:0 auto;max-width:760px;padding-left:2rem;display:grid;gap:2rem}
+  .timeline{margin:0 auto;max-width:780px;padding-left:2rem;display:grid;gap:1rem}
   .tl,.tl-label{position:relative}
-  /* marco */
-  .tl::before{content:"";position:absolute;z-index:1;left:calc(-2rem - 6px);top:.4rem;width:13px;height:13px;border-radius:50%;background:var(--leaf);border:2px solid var(--cream)}
+  /* cada marco e uma caixa; o ponto fica na linha, fora dela */
+  .tl{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem}
+  .tl::before{content:"";position:absolute;z-index:1;left:calc(-2rem - 7px);top:1.45rem;width:13px;height:13px;border-radius:50%;background:var(--leaf);border:2px solid var(--cream)}
   /* trecho de linha ate o marco seguinte */
-  .tl::after,.tl-label::after{content:"";position:absolute;left:calc(-2rem - 1px);top:.9rem;bottom:-2.5rem;width:2px;background:var(--leaf);opacity:.5}
-  .tl-label::after{top:0}
+  .tl::after,.tl-label::after{content:"";position:absolute;left:calc(-2rem - 1px);top:1.95rem;bottom:-2.6rem;width:2px;background:var(--leaf);opacity:.5}
+  .tl-label::after{top:-1.4rem;bottom:-2.9rem}
+  .tl.current{background:#fff;border-color:rgba(90,47,71,.3);box-shadow:inset 4px 0 0 var(--acai),0 14px 34px -22px rgba(63,32,51,.45)}
+  .tl.next{background:transparent;border-style:dashed;border-color:rgba(78,102,54,.45)}
+  /* divisor entre o que ja foi feito e o que vem pela frente */
+  .tl-label{margin:1.4rem 0 .4rem;background:var(--brown-deep);color:var(--cream);border-radius:14px;padding:1.15rem 1.4rem}
+  .tl-label::before{content:"";position:absolute;z-index:1;left:calc(-2rem - 8px);top:50%;width:15px;height:15px;margin-top:-7.5px;background:var(--gold);border:2px solid var(--cream);transform:rotate(45deg)}
+  .tl-label small{display:block;font-family:'Inter',system-ui,sans-serif;font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
   .tl:last-child::after{display:none}
   .tl.current::before{background:var(--acai);box-shadow:0 0 0 5px rgba(90,47,71,.16)}
   /* do presente em diante a linha fica tracejada e os marcos, vazados */
@@ -259,7 +286,7 @@
   .tl .tag{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acai);font-weight:700;margin-bottom:.35rem}
   .tl.next .tag{color:var(--leaf-deep)}
   .tl p{font-size:.95rem;color:#4a3627;line-height:1.62}
-  .tl-label{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:clamp(1.2rem,2.6vw,1.45rem);color:var(--brown-deep);line-height:1.2}
+  .tl-label{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:clamp(1.25rem,2.8vw,1.55rem);line-height:1.2}
 
   /* ---------- support ways: clickable tiles ---------- */
   .ways{display:grid;grid-template-columns:1fr;gap:1.2rem;max-width:1060px;margin-inline:auto}
@@ -269,10 +296,10 @@
     .way-sm{grid-column:span 2}
   }
   .way{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:1.9rem 1.7rem;display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
-  .way::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--tc);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+  .way{background:#FBF8F2;padding-top:2.2rem}
+  .way::before{content:"";position:absolute;left:0;top:0;height:6px;width:100%;background:var(--tc)}
   .way:hover,.way:focus-within{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--tc) 45%,transparent)}
-  .way:hover::before,.way:focus-within::before{transform:scaleX(1)}
-  .way-ico{width:50px;height:50px;border-radius:13px;background:color-mix(in srgb,var(--tc) 12%,transparent);color:var(--tc);display:grid;place-items:center;flex:none;margin-bottom:1.1rem}
+  .way-ico{width:50px;height:50px;border-radius:13px;background:var(--tc);color:#FBF3E7;display:grid;place-items:center;flex:none;margin-bottom:1.1rem}
   .way-ico svg{width:26px;height:26px}
   .way h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-.01em;font-size:1.2rem;color:var(--brown-deep);margin:0 0 .6rem}
   .way-lg h4{font-size:1.38rem}
@@ -295,6 +322,25 @@
   .sub-head{text-align:center;max-width:60ch;margin:clamp(3rem,6vw,4.2rem) auto clamp(1.6rem,3vw,2.2rem)}
   .sub-tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;line-height:1.4;padding:.5rem 1.05rem;border-radius:100px;background:var(--cream);border:1px solid var(--line);color:var(--brown-deep)}
   .sub-head h3{font-size:var(--fs-h3);color:var(--brown-deep);margin-top:.9rem;text-wrap:balance}
+
+  /* contrapartidas: painel escuro e informativo, para contrastar com os
+     cards claros do que o parceiro oferece */
+  .perks{margin-top:clamp(3.2rem,6vw,4.4rem);background:#37200f;color:#FBF3E7;border-radius:22px;padding:clamp(2.2rem,5vw,3.2rem) clamp(1.4rem,4vw,3rem)}
+  .perks-head{text-align:center;max-width:56ch;margin:0 auto clamp(2rem,4vw,2.8rem)}
+  .sub-tag-dark{background:rgba(246,236,220,.1);border-color:rgba(240,222,198,.3);color:#F0DEC6}
+  .perks-head h3{font-size:var(--fs-h3);color:#fff;margin-top:.9rem;text-wrap:balance}
+  .perks-grid{display:grid;grid-template-columns:1fr;gap:1.9rem}
+  .perk{text-align:center}
+  .perk+.perk{border-top:1px solid rgba(240,222,198,.18);padding-top:1.9rem}
+  .perk-ico{width:54px;height:54px;border-radius:50%;border:1.5px solid rgba(201,162,39,.65);color:var(--gold);display:grid;place-items:center;margin:0 auto 1.1rem}
+  .perk-ico svg{width:24px;height:24px}
+  .perk h4{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.22rem;line-height:1.2;color:#fff;margin-bottom:.6rem}
+  .perk p{font-size:.93rem;line-height:1.62;color:#EBDCC6;max-width:34ch;margin:0 auto}
+  @media(min-width:760px){
+    .perks-grid{grid-template-columns:repeat(3,1fr);gap:0}
+    .perk{padding:0 clamp(1.2rem,2.6vw,2.2rem)}
+    .perk+.perk{border-top:none;padding-top:0;border-left:1px solid rgba(240,222,198,.18)}
+  }
   @media(prefers-reduced-motion:reduce){.way,.way::before,.way-go svg{transition:none}.way:hover{transform:none}}
 
   /* ---------- contact ---------- */
@@ -373,6 +419,27 @@
   <div class="wrap hero-in">
     <img class="hero-logo" src="img/logo-transp.png" alt="Coozilhas">
     <h1>Segurança alimentar e geração de renda nas <em>ilhas de Belém</em></h1>
+    <script>
+      /* separa o titulo em palavras para a entrada em sequencia; roda aqui,
+         logo apos o h1, para nao haver um quadro com o titulo inteiro antes */
+      (function(){
+        var h=document.currentScript.previousElementSibling, i=0;
+        function split(node){
+          [].slice.call(node.childNodes).forEach(function(c){
+            if(c.nodeType===3){
+              var frag=document.createDocumentFragment();
+              c.textContent.split(/(\s+)/).forEach(function(part){
+                if(!part)return;
+                if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return;}
+                var s=document.createElement('span');s.className='w';s.style.setProperty('--i',i++);s.textContent=part;frag.appendChild(s);
+              });
+              node.replaceChild(frag,c);
+            } else if(c.nodeType===1){ split(c); }
+          });
+        }
+        split(h);
+      })();
+    </script>
     <div class="hero-rule"></div>
     <p class="hero-kicker">Duas cozinhas-escola,<br>prontas para sair do papel</p>
     <p class="hero-sub">No Combu e em Cotijuba, o diagnóstico já foi feito, as mulheres estão sendo capacitadas e o projeto técnico já está pronto. Agora falta transformar o que está no papel em realidade e para isso contamos com você.</p>
@@ -446,10 +513,10 @@
       <h2 style="font-size:var(--fs-h3)">Na prática, o Coozilhas se organiza em quatro frentes de atuação, que caminham juntas</h2>
     </div>
     <div class="pillars">
-      <div class="pillar"><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></div><h3>Cozinhas-escola</h3><p>A serem construídas em cada sede, para fomentar o conhecimento das mulheres das comunidades sobre a teoria e a prática da segurança alimentar, com impacto direto na alimentação das famílias e das escolas da região.</p></div>
-      <div class="pillar"><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20V9M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 12c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></div><h3>Quintais produtivos</h3><p>Fortalecidos em Cotijuba e implantados no Combu, garantindo produção local contínua de hortaliças, plantas medicinais e frutas regionais, mesmo nos períodos de estiagem.</p></div>
-      <div class="pillar"><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></div><h3>Compras coletivas</h3><p>Ao menos 4 ciclos por sede, organizando a compra conjunta de alimentos para reduzir custos e ampliar o acesso das famílias a uma alimentação mais diversa.</p></div>
-      <div class="pillar"><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 7l10-4 10 4-10 4L2 7z"/><path d="M6 9v5c0 1 3 3 6 3s6-2 6-3V9"/></svg></div><h3>Trilhas de formação</h3><p>Cursos que integram as três frentes anteriores, realizando formações para as mulheres em alimentação saudável, manejo de cozinhas e quintais, e empreendedorismo — temas solicitados e pensados coletivamente.</p></div>
+      <div class="pillar"><div class="ptop"><span class="pnum">01</span><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v8M18 11v8M9 4v3M15 4v3"/></svg></div></div><h3>Cozinhas-escola</h3><p>A serem construídas em cada sede, para fomentar o conhecimento das mulheres das comunidades sobre a teoria e a prática da segurança alimentar, com impacto direto na alimentação das famílias e das escolas da região.</p></div>
+      <div class="pillar"><div class="ptop"><span class="pnum">02</span><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20V9M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 12c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></div></div><h3>Quintais produtivos</h3><p>Fortalecidos em Cotijuba e implantados no Combu, garantindo produção local contínua de hortaliças, plantas medicinais e frutas regionais, mesmo nos períodos de estiagem.</p></div>
+      <div class="pillar"><div class="ptop"><span class="pnum">03</span><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></div></div><h3>Compras coletivas</h3><p>Ao menos 4 ciclos por sede, organizando a compra conjunta de alimentos para reduzir custos e ampliar o acesso das famílias a uma alimentação mais diversa.</p></div>
+      <div class="pillar"><div class="ptop"><span class="pnum">04</span><div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 7l10-4 10 4-10 4L2 7z"/><path d="M6 9v5c0 1 3 3 6 3s6-2 6-3V9"/></svg></div></div><h3>Trilhas de formação</h3><p>Cursos que integram as três frentes anteriores, realizando formações para as mulheres em alimentação saudável, manejo de cozinhas e quintais, e empreendedorismo — temas solicitados e pensados coletivamente.</p></div>
     </div>
     <div class="prose reveal" style="margin-top:2.4rem;text-align:center">
       <p style="font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:var(--fs-lead);color:var(--brown-deep);line-height:1.5">O resultado que buscamos coletivamente são novas fontes de geração de renda e o acesso a uma alimentação mais segura.</p>
@@ -537,7 +604,7 @@
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>Prontos para iniciar as obras das cozinhas-escola</h3>
         <p>No Combu (Boá na Ilha) e em Cotijuba (sede do MMIB). O diagnóstico, as capacitações e o orçamento técnico já estão prontos — falta agora dar início à construção, e é exatamente neste momento que buscamos parceiros.</p>
       </div>
-      <div class="tl-label">O caminho até a celebração</div>
+      <div class="tl-label"><small>Próximos passos</small>O caminho até a celebração</div>
       <div class="tl next">
         <span class="tag">Etapa 1</span>
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>Construção da cozinha</h3>
@@ -600,29 +667,16 @@
       </div>
     </div>
 
-    <div class="sub-head reveal" id="contrapartidas">
-      <span class="sub-tag">Contrapartidas</span>
+    <div class="perks reveal" id="contrapartidas">
+    <div class="perks-head">
+      <span class="sub-tag sub-tag-dark">Contrapartidas</span>
       <h3>O que sua empresa recebe ao apoiar o Coozilhas</h3>
     </div>
-    <div class="ways">
-      <div class="way way-sm" style="--tc:#6E523E">
-        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg></span>
-        <h4><a href="#contatos">Visibilidade institucional</a></h4>
-        <p>Parceiros do Coozilhas recebem o selo "Parceiro Coozilhas" para uso em suas próprias comunicações, além de identificação visual nos espaços que ajudaram a construir e equipar.</p>
-        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-      </div>
-      <div class="way way-sm" style="--tc:#4E6636">
-        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-        <h4><a href="#contatos">Vivência nas ilhas</a></h4>
-        <p>Representantes de empresas parceiras podem visitar Combu e Cotijuba, conhecer de perto as comunidades, o restaurante Boá na Ilha e a sede do MMIB, e acompanhar ao vivo o avanço das obras.</p>
-        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-      </div>
-      <div class="way way-sm" style="--tc:#5A2F47">
-        <span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m23 7-7 5 7 5zM1 5h15v14H1z"/></svg></span>
-        <h4><a href="#contatos">Conteúdo e prestação de contas</a></h4>
-        <p>Registro fotográfico e em vídeo de toda a jornada — do terreno vazio à cozinha em funcionamento — de uso livre para os parceiros em seus relatórios institucionais e de sustentabilidade.</p>
-        <div class="way-foot"><span class="way-go">Quero apoiar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-      </div>
+    <div class="perks-grid">
+      <div class="perk"><span class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg></span><h4>Visibilidade institucional</h4><p>Parceiros do Coozilhas recebem o selo "Parceiro Coozilhas" para uso em suas próprias comunicações, além de identificação visual nos espaços que ajudaram a construir e equipar.</p></div>
+      <div class="perk"><span class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h4>Vivência nas ilhas</h4><p>Representantes de empresas parceiras podem visitar Combu e Cotijuba, conhecer de perto as comunidades, o restaurante Boá na Ilha e a sede do MMIB, e acompanhar ao vivo o avanço das obras.</p></div>
+      <div class="perk"><span class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m23 7-7 5 7 5zM1 5h15v14H1z"/></svg></span><h4>Conteúdo e prestação de contas</h4><p>Registro fotográfico e em vídeo de toda a jornada — do terreno vazio à cozinha em funcionamento — de uso livre para os parceiros em seus relatórios institucionais e de sustentabilidade.</p></div>
+    </div>
     </div>
   </div>
 </section>
